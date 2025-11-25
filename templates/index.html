@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouthMind AI - Mental Health Support</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="18" fill="#4F46E5" opacity="0.1"/>
+                    <path d="M20 8C13.4 8 8 13.4 8 20C8 26.6 13.4 32 20 32C26.6 32 32 26.6 32 20C32 13.4 26.6 8 20 8ZM20 14C21.1 14 22 14.9 22 16C22 17.1 21.1 18 20 18C18.9 18 18 17.1 18 16C18 14.9 18.9 14 20 14ZM24 26H16V24H18V20H16V18H20V24H22V26H24Z" fill="#4F46E5"/>
+                </svg>
+                <h1>YouthMind AI</h1>
+            </div>
+            <p class="tagline">Your Mental Wellness Companion</p>
+        </header>
+
+        <!-- Emergency Banner -->
+        <div id="emergency-banner" class="emergency-banner hidden">
+            <div class="emergency-content">
+                <strong>⚠️ Crisis Support Available</strong>
+                <p>If you're experiencing a mental health crisis, please reach out:</p>
+                <div class="hotlines">
+                    <span><strong>India:</strong> AASRA 91-22-27546669</span>
+                    <span><strong>US:</strong> 988</span>
+                    <span><strong>International:</strong> <a href="https://www.opencounseling.com/suicide-hotlines" target="_blank">Find Help</a></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Chat Area -->
+        <div class="chat-wrapper">
+            <!-- Mood Tracker Card -->
+            <div class="mood-card">
+                <h3>How are you feeling today?</h3>
+                <div class="mood-selector">
+                    <button class="mood-btn" data-mood="1" title="Very Bad">😢</button>
+                    <button class="mood-btn" data-mood="2" title="Bad">😕</button>
+                    <button class="mood-btn" data-mood="3" title="Okay">😐</button>
+                    <button class="mood-btn" data-mood="4" title="Good">🙂</button>
+                    <button class="mood-btn" data-mood="5" title="Great">😊</button>
+                </div>
+                <div id="mood-feedback" class="mood-feedback"></div>
+            </div>
+
+            <!-- Chat Container -->
+            <div class="chat-container" id="chatContainer">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <p>Hello! I'm YouthMind AI, your mental wellness companion. 💙</p>
+                        <p>I'm here to listen, support, and help you explore your feelings in a safe, judgment-free space. Whether you're feeling anxious, stressed, happy, or just need someone to talk to, I'm here for you.</p>
+                        <p>How are you feeling today?</p>
+                    </div>
+                    <span class="timestamp"></span>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <textarea 
+                    id="messageInput" 
+                    placeholder="Type your message here... I'm here to listen 💙"
+                    rows="2"
+                ></textarea>
+                <button id="sendBtn" class="send-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M2 12L22 2L17 22L11 14L2 12Z" fill="currentColor"/>
+                    </svg>
+                    Send
+                </button>
+            </div>
+        </div>
+
+        <!-- Resources Sidebar -->
+        <div class="resources-panel">
+            <h3>🌟 Coping Strategies</h3>
+            <div class="resource-list" id="resourceList">
+                <div class="resource-item">
+                    <h4>🧘 Breathing Exercise</h4>
+                    <p>Try 4-7-8 breathing: Inhale 4 sec, hold 7 sec, exhale 8 sec</p>
+                </div>
+                <div class="resource-item">
+                    <h4>🌍 Grounding Technique</h4>
+                    <p>5-4-3-2-1: Name 5 things you see, 4 you touch, 3 you hear, 2 you smell, 1 you taste</p>
+                </div>
+                <div class="resource-item">
+                    <h4>📝 Journaling</h4>
+                    <p>Write your thoughts freely without judgment</p>
+                </div>
+                <div class="resource-item">
+                    <h4>🚶 Movement</h4>
+                    <p>Take a 5-minute walk or do gentle stretches</p>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                <p><strong>Note:</strong> YouthMind AI is a supportive tool and not a replacement for professional mental health care. If you're experiencing a crisis, please contact emergency services or a mental health professional immediately.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

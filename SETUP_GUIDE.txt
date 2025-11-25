@@ -1,0 +1,248 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║              YOUTHMIND AI - QUICK SETUP GUIDE                ║
+║                                                              ║
+║         Mental Health Support Chatbot for Youth              ║
+║        YUVAi Global Youth Challenge 2025 Submission          ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════
+📋 PREREQUISITES
+═══════════════════════════════════════════════════════════════
+
+Before you begin, ensure you have:
+  ✓ Python 3.8 or higher installed
+  ✓ pip (Python package manager)
+  ✓ A modern web browser (Chrome, Firefox, Safari, or Edge)
+  ✓ Internet connection (for initial setup)
+
+═══════════════════════════════════════════════════════════════
+🚀 INSTALLATION STEPS
+═══════════════════════════════════════════════════════════════
+
+STEP 1: EXTRACT THE PROJECT
+────────────────────────────────────────────────────────────────
+  1. Locate the YouthMind_AI_Chatbot.zip file
+  2. Extract it to your desired location
+  3. Open terminal/command prompt
+  4. Navigate to the extracted folder:
+
+     Windows:
+       cd C:\path	o\YouthMind_AI_Chatbot
+
+     Mac/Linux:
+       cd /path/to/YouthMind_AI_Chatbot
+
+
+STEP 2: INSTALL DEPENDENCIES
+────────────────────────────────────────────────────────────────
+  Run the following command in your terminal:
+
+     pip install -r requirements.txt
+
+  This will install:
+    • Flask (web framework)
+    • Werkzeug (WSGI utilities)
+
+  ⏱ Estimated time: 1-2 minutes
+
+
+STEP 3: RUN THE APPLICATION
+────────────────────────────────────────────────────────────────
+  Start the Flask server with:
+
+     python app.py
+
+  You should see output like:
+    * Running on http://127.0.0.1:5000
+    * Debug mode: on
+
+  ✅ The server is now running!
+
+
+STEP 4: ACCESS THE APPLICATION
+────────────────────────────────────────────────────────────────
+  1. Open your web browser
+  2. Navigate to one of these URLs:
+
+     http://localhost:5000
+     or
+     http://127.0.0.1:5000
+
+  3. You should see the YouthMind AI interface
+  4. Start chatting!
+
+
+STEP 5: STOP THE APPLICATION
+────────────────────────────────────────────────────────────────
+  To stop the server:
+    • Press Ctrl+C in the terminal
+    • The application will shut down gracefully
+
+═══════════════════════════════════════════════════════════════
+🎯 QUICK START GUIDE
+═══════════════════════════════════════════════════════════════
+
+USING THE CHATBOT:
+
+1. RATE YOUR MOOD
+   • Click one of the 5 emoji faces at the top
+   • This helps the AI understand your emotional state
+
+2. START A CONVERSATION
+   • Type your message in the text box at the bottom
+   • Press Enter or click the "Send" button
+   • The AI will respond with empathetic support
+
+3. RECEIVE COPING STRATEGIES
+   • Based on your conversation, the AI may suggest techniques
+   • Check the Resources panel on the right for more strategies
+
+4. EMERGENCY SUPPORT
+   • If you mention crisis keywords, emergency contacts will appear
+   • Always reach out to professionals for serious concerns
+
+═══════════════════════════════════════════════════════════════
+🔧 TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════
+
+PROBLEM: "python: command not found"
+SOLUTION: Try using 'python3' instead of 'python'
+          python3 app.py
+
+PROBLEM: "Module not found: Flask"
+SOLUTION: Ensure you ran: pip install -r requirements.txt
+          Or try: pip3 install -r requirements.txt
+
+PROBLEM: "Port 5000 already in use"
+SOLUTION: Either:
+          • Close the application using port 5000, OR
+          • Modify app.py line: app.run(debug=True, port=5001)
+            Then access at http://localhost:5001
+
+PROBLEM: Page not loading in browser
+SOLUTION: • Check terminal for error messages
+          • Ensure Flask server is running
+          • Try a different browser
+          • Clear browser cache (Ctrl+Shift+Delete)
+
+PROBLEM: Styling looks broken
+SOLUTION: • Hard refresh the page (Ctrl+Shift+R or Cmd+Shift+R)
+          • Ensure all files extracted correctly
+          • Check browser console for errors (F12)
+
+═══════════════════════════════════════════════════════════════
+📁 PROJECT STRUCTURE
+═══════════════════════════════════════════════════════════════
+
+YouthMind_AI_Chatbot/
+│
+├── app.py                    # Main Flask application
+├── requirements.txt          # Python dependencies
+├── README.md                 # Comprehensive documentation
+├── PROJECT_PROPOSAL.md       # Challenge submission details
+├── SETUP_GUIDE.txt          # This file
+│
+├── templates/
+│   └── index.html           # Main HTML template
+│
+├── static/
+│   ├── css/
+│   │   └── style.css        # Styling
+│   └── js/
+│       └── script.js        # Client-side JavaScript
+│
+├── models/                   # (For future AI model storage)
+└── data/                     # (For future data storage)
+
+═══════════════════════════════════════════════════════════════
+🌐 ACCESSING FROM OTHER DEVICES
+═══════════════════════════════════════════════════════════════
+
+To access from other devices on your local network:
+
+1. Find your computer's IP address:
+
+   Windows:      ipconfig
+   Mac/Linux:    ifconfig or ip addr
+
+   Look for something like: 192.168.1.XXX
+
+2. Modify app.py, change the last line to:
+
+   app.run(debug=True, host='0.0.0.0', port=5000)
+
+3. Access from other devices at:
+
+   http://[YOUR_IP_ADDRESS]:5000
+   Example: http://192.168.1.105:5000
+
+⚠️  NOTE: This exposes the app on your local network only.
+    For public deployment, use proper hosting services.
+
+═══════════════════════════════════════════════════════════════
+📚 ADDITIONAL RESOURCES
+═══════════════════════════════════════════════════════════════
+
+For detailed information, see:
+  • README.md - Full project documentation
+  • PROJECT_PROPOSAL.md - Challenge submission details
+  • Flask Documentation: https://flask.palletsprojects.com/
+
+For support:
+  • Check the README.md troubleshooting section
+  • Review Flask documentation
+  • Check Python/pip installation guides
+
+═══════════════════════════════════════════════════════════════
+⚠️  IMPORTANT REMINDERS
+═══════════════════════════════════════════════════════════════
+
+1. This is a SUPPORT TOOL, not professional mental health care
+2. In emergencies, contact local crisis services immediately
+3. The chatbot is for educational and support purposes
+4. No personal data is stored permanently
+5. Always consult professionals for serious mental health concerns
+
+═══════════════════════════════════════════════════════════════
+✅ VERIFICATION CHECKLIST
+═══════════════════════════════════════════════════════════════
+
+Before submitting or demonstrating, ensure:
+
+  □ Python 3.8+ installed and working
+  □ Dependencies installed (requirements.txt)
+  □ Application runs without errors
+  □ Can access interface in browser
+  □ Chat functionality works
+  □ Mood selector responds
+  □ Coping strategies display correctly
+  □ Mobile-responsive design works
+  □ Crisis detection activates emergency banner
+
+═══════════════════════════════════════════════════════════════
+🎉 YOU'RE ALL SET!
+═══════════════════════════════════════════════════════════════
+
+YouthMind AI is ready to provide mental health support!
+
+Key Features to Demonstrate:
+  ✓ Empathetic AI conversations
+  ✓ Mood tracking system
+  ✓ Evidence-based coping strategies
+  ✓ Crisis detection and emergency resources
+  ✓ Beautiful, youth-friendly interface
+
+Thank you for supporting youth mental wellness! 💙
+
+═══════════════════════════════════════════════════════════════
+
+Project: YouthMind AI
+Challenge: YUVAi Global Youth Challenge 2025
+Theme: Empowering people and communities
+Focus: Youth mental wellbeing
+
+Built with care for young people everywhere 🌟
+
+═══════════════════════════════════════════════════════════════
