@@ -13,6 +13,7 @@ import random
 from datetime import datetime
 import os
 import re
+import traceback
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -113,9 +114,11 @@ class MentalHealthBot:
         # Handle crisis situation
         if mood == 'crisis':
             return {
-                'response': "I'm really concerned about what you've shared. Your life matters, and there are people who want to help. Please reach out to a crisis helpline immediately. Would you like me to provide you with emergency contact information?",
+                'response': ("I'm really concerned about what you've shared. Your life matters, and there are people who want to help. "
+                             "Please reach out to a crisis helpline immediately. Would you like me to provide you with emergency contact information?"),
                 'mood': 'crisis',
                 'resources': self.emergency_resources,
+                'coping_strategy': None,
                 'urgent': True
             }
 
@@ -140,6 +143,7 @@ class MentalHealthBot:
             'response': response_text,
             'mood': mood,
             'coping_strategy': coping_suggestion,
+            'resources': None,
             'urgent': False
         }
 
@@ -155,8 +159,13 @@ def index():
 def chat():
     """Handle chat messages"""
     try:
-        data = request.get_json()
-        message = data.get('message', '').strip()
+        # Robust parsing for JSON with a fallback to form data
+        data = request.get_json(silent=True)
+        if data is None:
+            data = request.form.to_dict() or {}
+
+        # Normalize values
+        message = (data.get('message') or '').strip()
         mood_rating = data.get('mood_rating', None)
 
         if not message:
@@ -165,20 +174,33 @@ def chat():
         # Get bot response
         bot_response = bot.get_response(message, mood_rating)
 
-        # Store mood if rating provided
-        if mood_rating:
-            if 'mood_history' not in session:
-                session['mood_history'] = []
-            session['mood_history'].append({
-                'rating': mood_rating,
+        # Store mood if rating provided (explicit check to avoid None/empty-string issues)
+        if mood_rating is not None and mood_rating != '':
+            try:
+                rating_val = int(mood_rating)
+            except (ValueError, TypeError):
+                rating_val = mood_rating  # keep original if it isn't an int
+            history = session.get('mood_history', [])
+            history.append({
+                'rating': rating_val,
                 'timestamp': datetime.now().isoformat()
             })
+            session['mood_history'] = history
             session.modified = True
+
+        # Ensure consistent API shape expected by frontend
+        if 'coping_strategy' not in bot_response:
+            bot_response['coping_strategy'] = None
+        if 'resources' not in bot_response:
+            bot_response['resources'] = None
+        if 'urgent' not in bot_response:
+            bot_response['urgent'] = False
 
         return jsonify(bot_response)
 
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        app.logger.error(traceback.format_exc())
+        return jsonify({'error': 'Internal server error'}), 500
 
 @app.route('/mood-history')
 def mood_history():
